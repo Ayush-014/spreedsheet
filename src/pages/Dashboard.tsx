@@ -1,7 +1,9 @@
-import { SpreadsheetHeaderBar } from "../components/index.components";
+import { SpreadsheetHeaderBar, ToolbarRow } from "../components/index.components";
 
 export default function Dashboard() {
-    return(
+    return(<>
         <SpreadsheetHeaderBar />
+        <ToolbarRow />
+    </>
     )
 }

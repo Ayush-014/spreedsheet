@@ -5,6 +5,9 @@ import StatusColumn from "./sheet/StatusColumn";
 import SubmittedColumn from "./sheet/SubmittedColumn";
 import SubmitterColumn from "./sheet/SubmitterColumn";
 import JobRequestColumn from "./sheet/JobRequestColumn";
+import UrlColumn from "./sheet/UrlColumn";
+import AnswerBlock from "./sheet/AnswerBlock";
+import AssignedColumn from "./sheet/AssignedColumn";
 
 export {
     SpreadsheetHeaderBar,
@@ -13,5 +16,8 @@ export {
     StatusColumn,
     SubmittedColumn,
     SubmitterColumn,
-    JobRequestColumn
+    JobRequestColumn,
+    UrlColumn,
+    AnswerBlock,
+    AssignedColumn
 }

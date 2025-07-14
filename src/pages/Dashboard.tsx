@@ -1,4 +1,4 @@
-import { IndexColumn, JobRequestColumn, SpreadsheetHeaderBar, StatusColumn, SubmittedColumn, SubmitterColumn, ToolbarRow } from "../components/index.components";
+import { AnswerBlock, AssignedColumn, IndexColumn, JobRequestColumn, SpreadsheetHeaderBar, StatusColumn, SubmittedColumn, SubmitterColumn, ToolbarRow, UrlColumn } from "../components/index.components";
 
 export default function Dashboard() {
     return(<>
@@ -10,6 +10,9 @@ export default function Dashboard() {
             <SubmitterColumn />
             <StatusColumn />
             <SubmittedColumn />
+            <UrlColumn />
+            <AssignedColumn />
+            <AnswerBlock />
         </main>
     </>
     )

@@ -9,8 +9,30 @@ const assignedUsers = [
 ];
 
 const fillerRows = 19;
+const totalRows = assignedUsers.length + fillerRows;
+const columnIndex = 6;
 
 const AssignedColumn: React.FC = () => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    row: number,
+    col: number
+  ) => {
+    e.preventDefault();
+
+    const moveFocus = (r: number, c: number) => {
+      const target = document.querySelector(
+        `[data-coordinates="${r}-${c}"]`
+      ) as HTMLDivElement;
+      if (target) target.focus();
+    };
+
+    if (e.key === "ArrowDown" && row < totalRows - 1) moveFocus(row + 1, col);
+    else if (e.key === "ArrowUp" && row > 0) moveFocus(row - 1, col);
+    else if (e.key === "ArrowLeft" && col > 0) moveFocus(row, col - 1);
+    else if (e.key === "ArrowRight") moveFocus(row, col + 1);
+  };
+
   return (
     <div className="w-[124px] flex flex-col space-y-[1px]">
       
@@ -33,23 +55,21 @@ const AssignedColumn: React.FC = () => {
         </span>
       </div>
 
-      {assignedUsers.map((name, idx) => (
-        <div
-          key={idx}
-          onClick={() => console.log(`Clicked Assigned cell ${idx}: ${name}`)}
-          className="w-[124px] h-[32px] px-2 flex items-center text-[12px] leading-4 font-normal text-[#121212] bg-white hover:bg-gray-100 truncate border-r border-b border-[#E0E0E0] cursor-pointer"
-        >
-          {name}
-        </div>
-      ))}
-
-      {Array.from({ length: fillerRows }).map((_, idx) => (
-        <div
-          key={`filler-${idx}`}
-          onClick={() => console.log(`Clicked Assigned filler cell ${idx}`)}
-          className="w-[124px] h-[32px] p-2 bg-white border-r border-b border-[#E0E0E0] hover:bg-gray-100 cursor-pointer"
-        ></div>
-      ))}
+      {[...assignedUsers, ...Array.from({ length: fillerRows }, () => "")].map(
+        (name, rowIdx) => (
+          <div
+            key={`assigned-${rowIdx}`}
+            role="button"
+            tabIndex={0}
+            data-coordinates={`${rowIdx}-${columnIndex}`}
+            onClick={(e) => e.currentTarget.focus()}
+            onKeyDown={(e) => handleKeyDown(e, rowIdx, columnIndex)}
+            className="w-[124px] h-[32px] px-2 flex items-center text-[12px] leading-4 font-normal text-[#121212] bg-white hover:bg-gray-100 truncate border-r border-b border-[#E0E0E0] cursor-pointer outline-none focus:ring-1 focus:ring-green-800"
+          >
+            {name}
+          </div>
+        )
+      )}
     </div>
   );
 };

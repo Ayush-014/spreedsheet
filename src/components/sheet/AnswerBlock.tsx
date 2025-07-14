@@ -28,6 +28,27 @@ const AnswerBlock: React.FC = () => {
   ];
 
   const fillerRows = 19;
+  const totalRows = data.length + fillerRows;
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    row: number,
+    col: number
+  ) => {
+    e.preventDefault();
+
+    const moveFocus = (r: number, c: number) => {
+      const target = document.querySelector(
+        `[data-coordinates="${r}-${c}"]`
+      ) as HTMLDivElement;
+      if (target) target.focus();
+    };
+
+    if (e.key === "ArrowDown" && row < totalRows - 1) moveFocus(row + 1, col);
+    else if (e.key === "ArrowUp" && row > 0) moveFocus(row - 1, col);
+    else if (e.key === "ArrowRight") moveFocus(row, col + 1);
+    else if (e.key === "ArrowLeft" && col > 0) moveFocus(row, col - 1);
+  };
 
   return (
     <div className="w-[251px] space-y-[1px]">
@@ -51,29 +72,29 @@ const AnswerBlock: React.FC = () => {
             <span className="text-[12px] font-semibold text-[#121212]">Priority</span>
           </div>
 
-          {data.map((item, idx) => (
-            <div
-              key={idx}
-              onClick={() => console.log(`Clicked Priority cell ${idx}: ${item.priority}`)}
-              className="h-[32px] px-2 flex items-center bg-white justify-center border-r border-b hover:bg-gray-100 cursor-pointer"
-            >
+          {[...data, ...Array.from({ length: fillerRows }, () => ({ priority: "" }))].map(
+            (item, rowIdx) => (
               <div
-                className={`w-[48px] h-[16px] text-[12px] leading-4 font-semibold text-center rounded ${getPriorityColor(
-                  item.priority
-                )}`}
+                key={`priority-${rowIdx}`}
+                role="button"
+                tabIndex={0}
+                data-coordinates={`${rowIdx}-6`}
+                onClick={(e) => e.currentTarget.focus()}
+                onKeyDown={(e) => handleKeyDown(e, rowIdx, 6)}
+                className="h-[32px] px-2 flex items-center bg-white justify-center border-r border-b hover:bg-gray-100 cursor-pointer outline-none focus:ring-1 focus:ring-green-800"
               >
-                {item.priority}
+                {item.priority && (
+                  <div
+                    className={`w-[48px] h-[16px] text-[12px] leading-4 font-semibold text-center rounded ${getPriorityColor(
+                      item.priority
+                    )}`}
+                  >
+                    {item.priority}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
-
-          {Array.from({ length: fillerRows }).map((_, idx) => (
-            <div
-              key={`filler-priority-${idx}`}
-              onClick={() => console.log(`Clicked Priority filler cell ${idx}`)}
-              className="h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100 cursor-pointer"
-            ></div>
-          ))}
+            )
+          )}
         </div>
 
         <div className="w-[125px] space-y-[1px]">
@@ -81,25 +102,25 @@ const AnswerBlock: React.FC = () => {
             <span className="text-[12px] font-semibold text-[#121212]">Due Date</span>
           </div>
 
-          {data.map((item, idx) => (
-            <div
-              key={idx}
-              onClick={() => console.log(`Clicked Due Date cell ${idx}: ${item.dueDate}`)}
-              className="h-[32px] px-2 flex items-center bg-white justify-end border-r border-b hover:bg-gray-100 cursor-pointer"
-            >
-              <span className="text-[12px] font-normal text-[#121212] leading-4 w-[109px] text-right truncate">
-                {item.dueDate}
-              </span>
-            </div>
-          ))}
-
-          {Array.from({ length: fillerRows }).map((_, idx) => (
-            <div
-              key={`filler-date-${idx}`}
-              onClick={() => console.log(`Clicked Due Date filler cell ${idx}`)}
-              className="h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100 cursor-pointer"
-            ></div>
-          ))}
+          {[...data, ...Array.from({ length: fillerRows }, () => ({ dueDate: "" }))].map(
+            (item, rowIdx) => (
+              <div
+                key={`due-${rowIdx}`}
+                role="button"
+                tabIndex={0}
+                data-coordinates={`${rowIdx}-7`}
+                onClick={(e) => e.currentTarget.focus()}
+                onKeyDown={(e) => handleKeyDown(e, rowIdx, 7)}
+                className="h-[32px] px-2 flex items-center bg-white justify-end border-r border-b hover:bg-gray-100 cursor-pointer outline-none focus:ring-1 focus:ring-green-800"
+              >
+                {item.dueDate && (
+                  <span className="text-[12px] font-normal text-[#121212] leading-4 w-[109px] text-right truncate">
+                    {item.dueDate}
+                  </span>
+                )}
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>

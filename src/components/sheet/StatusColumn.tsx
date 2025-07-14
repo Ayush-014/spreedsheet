@@ -27,6 +27,29 @@ const getStatusStyle = (status: StatusType) => {
 };
 
 export default function StatusColumn() {
+  const columnIndex = 3;
+  const totalRows = statusData.length;
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    row: number,
+    col: number
+  ) => {
+    e.preventDefault();
+
+    const moveFocus = (r: number, c: number) => {
+      const el = document.querySelector(
+        `[data-coordinates="${r}-${c}"]`
+      ) as HTMLDivElement;
+      if (el) el.focus();
+    };
+
+    if (e.key === "ArrowDown" && row < totalRows - 1) moveFocus(row + 1, col);
+    else if (e.key === "ArrowUp" && row > 0) moveFocus(row - 1, col);
+    else if (e.key === "ArrowLeft" && col > 0) moveFocus(row, col - 1);
+    else if (e.key === "ArrowRight") moveFocus(row, col + 1);
+  };
+
   return (
     <div
       className="bg-white"
@@ -65,8 +88,14 @@ export default function StatusColumn() {
       {statusData.map((status, idx) => (
         <div
           key={idx}
-          onClick={() => console.log(`Clicked on Status's row ${idx}`)}
-          className={`h-[32px] border-b px-2 flex items-center bg-white py-4 justify-center border-r hover:bg-gray-100`}
+          role="button"
+          tabIndex={0}
+          data-coordinates={`${idx}-${columnIndex}`}
+          onClick={(e) => e.currentTarget.focus()}
+          onKeyDown={(e) => handleKeyDown(e, idx, columnIndex)}
+          onFocus={() => console.log(`Focused Status row ${idx}`)}
+          onBlur={() => console.log(`Blurred Status row ${idx}`)}
+          className={`h-[32px] border-b px-2 flex items-center bg-white py-4 justify-center border-r hover:bg-gray-100 cursor-pointer outline-none focus:ring-1 focus:ring-green-800`}
         >
           {status && (
             <span

@@ -1,22 +1,45 @@
 import React from "react";
 
+const totalRows = 24;
+
 const AddColumn: React.FC = () => {
-  const totalRows = 26;
-
   return (
-    <div className="w-[124px] h-[872px] flex flex-col border-r border-gray-200 bg-white">
+    <div className="w-[124px] flex flex-col space-y-[1px]">
       
-      <div className="h-[32px] py-[15px] flex items-center justify-center border-b border-gray-200 bg-[#E2E2E2]">
-        <span className="text-[20px] leading-[20px] text-[#505050]">+</span>
+      <div
+        tabIndex={0}
+        role="button"
+        className="w-[124px] h-[32px] flex items-center justify-center text-[20px] text-[#505050] bg-[#E2E2E2] border-r border-b cursor-pointer outline-none focus:ring-1 focus:ring-green-800"
+        onClick={(e) => e.currentTarget.focus()}
+        data-coordinates={`0-9`}
+      >
+        +
       </div>
-
 
       {Array.from({ length: totalRows - 1 }).map((_, i) => (
         <div
           key={i}
-          onClick={() => console.log(`Clicked on Add-Coulmn's filler row ${i}`)}
-          className="h-[32px] py-4 px-2 border-b border-gray-200 flex items-center bg-white hover:bg-gray-100"
-        ></div>
+          tabIndex={0}
+          role="button"
+          data-coordinates={`${i + 1}-9`}
+          onClick={(e) => e.currentTarget.focus()}
+          onKeyDown={(e) => {
+            e.preventDefault();
+            const move = (r: number, c: number) => {
+              const el = document.querySelector(
+                `[data-coordinates="${r}-${c}"]`
+              ) as HTMLDivElement;
+              if (el) el.focus();
+            };
+
+            const row = i + 1;
+            if (e.key === "ArrowDown" && row < totalRows - 1) move(row + 1, 9);
+            else if (e.key === "ArrowUp" && row > 1) move(row - 1, 9);
+            else if (e.key === "ArrowLeft") move(row, 8);
+            else if (e.key === "ArrowRight") move(row, 10);
+          }}
+          className="w-[124px] h-[32px] bg-white border-r border-b hover:bg-gray-100 cursor-pointer outline-none focus:ring-1 focus:ring-green-800"
+        />
       ))}
     </div>
   );

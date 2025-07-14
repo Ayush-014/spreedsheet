@@ -10,6 +10,7 @@ import AnswerBlock from "./sheet/AnswerBlock";
 import AssignedColumn from "./sheet/AssignedColumn";
 import ExtractColumn from "./sheet/ExtractColumn";
 import AddColumn from "./sheet/AddColumn";
+import TabBar from "./footer/TabBar"
 
 export {
     SpreadsheetHeaderBar,
@@ -23,5 +24,6 @@ export {
     AnswerBlock,
     AssignedColumn,
     ExtractColumn,
-    AddColumn
+    AddColumn,
+    TabBar
 }

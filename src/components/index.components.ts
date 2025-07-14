@@ -8,6 +8,8 @@ import JobRequestColumn from "./sheet/JobRequestColumn";
 import UrlColumn from "./sheet/UrlColumn";
 import AnswerBlock from "./sheet/AnswerBlock";
 import AssignedColumn from "./sheet/AssignedColumn";
+import ExtractColumn from "./sheet/ExtractColumn";
+import AddColumn from "./sheet/AddColumn";
 
 export {
     SpreadsheetHeaderBar,
@@ -19,5 +21,7 @@ export {
     JobRequestColumn,
     UrlColumn,
     AnswerBlock,
-    AssignedColumn
+    AssignedColumn,
+    ExtractColumn,
+    AddColumn
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function IndexColumn() {
-  const totalVisibleRows = 23;
+  const totalVisibleRows = 24;
   const rows = Array.from({ length: totalVisibleRows }, (_, i) => i + 1);
 
   return (
@@ -29,7 +29,6 @@ export default function IndexColumn() {
         </div>
       ))}
 
-      <div className="w-full h-[32px] bg-white border-b border-gray-200" />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, Bell } from "lucide-react";
-import avatar from "../assets/johndoe.png";
+import avatar from "../../assets/johndoe.png"
 
 export default function SpreadsheetHeaderBar() {
   return (

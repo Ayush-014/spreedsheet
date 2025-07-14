@@ -22,7 +22,7 @@ const JobRequestColumn: React.FC = () => {
       </div>
 
       {/* header */}
-      <div className="w-full h-[32px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r border-gray-200">
+      <div className="w-full h-[32px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r border-b border-gray-200">
         {/* icon + label */}
         <div className="flex items-center gap-[4px]">
           <div className="w-[16px] h-[16px] flex items-center justify-center">📄</div>
@@ -41,7 +41,7 @@ const JobRequestColumn: React.FC = () => {
       {jobTasks.map((task, idx) => (
         <div
           key={idx}
-          className="w-[256px] h-[32px] px-2 flex items-center bg-white border-r border-gray-200"
+          className="w-[256px] h-[32px] px-2 flex items-center bg-white border-r border-b border-gray-200"
         >
           <span className="text-[12px] text-[#121212] leading-3 truncate w-[240px]">
             {task}
@@ -53,7 +53,7 @@ const JobRequestColumn: React.FC = () => {
       {Array.from({ length: fillerCount }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-full h-[32px] p-2 bg-white border-r border-gray-200"
+          className="w-full h-[32px] p-2 bg-white border-r border-b border-gray-200"
         ></div>
       ))}
     </div>

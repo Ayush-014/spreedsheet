@@ -17,7 +17,7 @@ const submittedDates = [
       <div className="w-full h-[32px] p-2 bg-[#E2E2E2]"></div>
 
       {/* header */}
-      <div className="w-[124px] h-[32px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r">
+      <div className="w-[124px] h-[32px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r border-b">
         {/* icon + label */}
         <div className="w-[88px] h-[16px] flex items-center gap-[4px]">
           {/* icon */}
@@ -41,7 +41,7 @@ const submittedDates = [
       {submittedDates.map((date, idx) => (
         <div
           key={idx}
-          className="w-full h-[32px] px-2 bg-white flex items-center justify-end border-r"
+          className="w-full h-[32px] px-2 bg-white flex items-center justify-end border-r border-b"
         >
           <span className="text-[12px] font-normal text-[#121212] leading-4 text-right w-[108px] truncate">
             {date}
@@ -53,7 +53,7 @@ const submittedDates = [
       {Array.from({ length: fillerRows }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-full h-[32px] p-2 bg-white border-r"
+          className="w-full h-[32px] p-2 bg-white border-r border-b"
         ></div>
       ))}
     </div>

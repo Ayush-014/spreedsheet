@@ -8,7 +8,7 @@ const statusData: StatusType[] = [
   "In-process",
   "Complete",
   "Blocked",
-  "", "", "", "", "", "", "", "", "", "", "", "", ""
+  "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
 ];
 
 const getStatusStyle = (status: StatusType) => {
@@ -37,11 +37,11 @@ export default function StatusColumn() {
 
       {/* first filler  */}
       <div
-        className="w-[124px] h-[32px] p-2 bg-[#E2E2E2] border-r"
+        className="w-[124px] h-[32px] bg-[#E2E2E2] border-r"
       ></div>
 
       {/* header */}
-      <div className="w-[124px] h-[32px] py-[17px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r">
+      <div className="w-[124px] h-[32px] mt-[1px] px-[8px] pr-[4px] bg-[#EEEEEE] flex items-center justify-between border-r">
         {/* icon + label */}
         <div className="w-[88px] h-[16px] flex items-center gap-[4px]">
           {/* icon */}
@@ -65,7 +65,7 @@ export default function StatusColumn() {
       {statusData.map((status, idx) => (
         <div
           key={idx}
-          className={`h-[32px] border-b border-gray-100 px-2 flex items-center bg-white py-4 justify-center border-r`}
+          className={`h-[32px] border-b px-2 flex items-center bg-white py-4 justify-center border-r`}
         >
           {status && (
             <span

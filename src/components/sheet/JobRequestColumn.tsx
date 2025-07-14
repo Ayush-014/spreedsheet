@@ -18,7 +18,7 @@ const JobRequestColumn: React.FC = () => {
         <div className="w-[158px] h-[24px] bg-[#EEEEEE] px-1 py-[2px] rounded flex items-center gap-1 truncate">
           🔗 Q3 Financial Overview
         </div>
-        <div className="w-[16px] h-[16px] flex items-center justify-center">⭮</div>
+        <div className="w-[16px] h-[16px] flex items-center justify-center rotate-180">^</div>
       </div>
 
       {/* header */}
@@ -33,7 +33,7 @@ const JobRequestColumn: React.FC = () => {
 
         {/* dropdown */}
         <div className="w-[20px] h-[20px] p-[4px] rounded-[4px] flex items-center justify-center cursor-pointer">
-          <span className="text-[#757575] text-sm leading-none">⋯</span>
+          <span className="text-[#757575] text-sm leading-none rotate-180">^</span>
         </div>
       </div>
 
@@ -41,7 +41,8 @@ const JobRequestColumn: React.FC = () => {
       {jobTasks.map((task, idx) => (
         <div
           key={idx}
-          className="w-[256px] h-[32px] px-2 flex items-center bg-white border-r border-b border-gray-200"
+          onClick={() => console.log(`Clicked on Job Request's content row ${idx}`)}
+          className="w-[256px] h-[32px] px-2 flex items-center bg-white border-r border-b border-gray-200 hover:bg-gray-100"
         >
           <span className="text-[12px] text-[#121212] leading-3 truncate w-[240px]">
             {task}
@@ -53,7 +54,8 @@ const JobRequestColumn: React.FC = () => {
       {Array.from({ length: fillerCount }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-full h-[32px] p-2 bg-white border-r border-b border-gray-200"
+          onClick={() => console.log(`Clicked on Job Request's filler row ${idx}`)}
+          className="w-full h-[32px] p-2 bg-white border-r border-b border-gray-200 hover:bg-gray-100"
         ></div>
       ))}
     </div>

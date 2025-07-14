@@ -57,7 +57,7 @@ export default function StatusColumn() {
 
         {/* dropdown */}
         <div className="w-[20px] h-[20px] p-[4px] rounded-[4px] flex items-center justify-center">
-          <span className="w-[12px] text-[#757575] text-sm leading-none">⋯</span>
+          <span className="w-[12px] text-[#757575] text-sm leading-none rotate-180">^</span>
         </div>
       </div>
 
@@ -65,7 +65,8 @@ export default function StatusColumn() {
       {statusData.map((status, idx) => (
         <div
           key={idx}
-          className={`h-[32px] border-b px-2 flex items-center bg-white py-4 justify-center border-r`}
+          onClick={() => console.log(`Clicked on Status's row ${idx}`)}
+          className={`h-[32px] border-b px-2 flex items-center bg-white py-4 justify-center border-r hover:bg-gray-100`}
         >
           {status && (
             <span

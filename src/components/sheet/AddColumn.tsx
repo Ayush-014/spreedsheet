@@ -14,7 +14,8 @@ const AddColumn: React.FC = () => {
       {Array.from({ length: totalRows - 1 }).map((_, i) => (
         <div
           key={i}
-          className="h-[32px] py-4 px-2 border-b border-gray-200 flex items-center bg-white"
+          onClick={() => console.log(`Clicked on Add-Coulmn's filler row ${i}`)}
+          className="h-[32px] py-4 px-2 border-b border-gray-200 flex items-center bg-white hover:bg-gray-100"
         ></div>
       ))}
     </div>

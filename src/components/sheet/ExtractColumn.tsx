@@ -20,8 +20,8 @@ const ExtractColumn: React.FC = () => {
           <span className="text-[14px] font-medium leading-5 text-[#695149]">
             Extract
           </span>
-          <div className="w-[20px] h-[20px] rounded-[4px] flex items-center justify-center">
-            ⋯
+          <div className="w-[20px] h-[20px] rounded-[4px] flex items-center justify-center rotate-180">
+            ^
           </div>
         </div>
       </div>
@@ -35,7 +35,8 @@ const ExtractColumn: React.FC = () => {
       {values.map((val, idx) => (
         <div
           key={idx}
-          className="h-[32px] px-2 bg-white flex items-center justify-end border-r border-b"
+          onClick={() => console.log(`Clicked on Extract value row ${idx}: ₹${val}`)}
+          className="h-[32px] px-2 bg-white flex items-center justify-end border-r border-b hover:bg-gray-100 cursor-pointer"
         >
           <span className="text-[12px] font-normal text-[#121212] leading-4">
             {val}
@@ -49,7 +50,8 @@ const ExtractColumn: React.FC = () => {
       {Array.from({ length: fillerRows }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="h-[32px] bg-white p-2 border-r border-b"
+          onClick={() => console.log(`Clicked on Extract filler row ${idx}`)}
+          className="h-[32px] bg-white p-2 border-r border-b hover:bg-gray-100 cursor-pointer"
         ></div>
       ))}
     </div>

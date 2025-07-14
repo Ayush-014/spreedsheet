@@ -18,8 +18,8 @@ export default function SpreadsheetHeaderBar() {
           <span className="px-1">›</span>
           <span>Folder 2</span>
           <span className="px-1">›</span>
-          <span>Spreadsheet 3</span>
-          <span className="px-1">⋯</span>
+          <span className="text-black">Spreadsheet 3</span>
+          <span className="px-1 rotate-180">^</span>
         </div>
       </div>
 

@@ -33,7 +33,7 @@ const submittedDates = [
 
         {/* dropdown */}
         <div className="w-[20px] h-[20px] p-[4px] rounded-[4px] flex items-center justify-center">
-          <span className="w-[12px] text-[#757575] text-sm leading-none">⋯</span>
+          <span className="w-[12px] text-[#757575] text-sm leading-none rotate-180">^</span>
         </div>
       </div>
 
@@ -41,7 +41,8 @@ const submittedDates = [
       {submittedDates.map((date, idx) => (
         <div
           key={idx}
-          className="w-full h-[32px] px-2 bg-white flex items-center justify-end border-r border-b"
+          onClick={() => console.log(`Clicked on submitted's content row ${idx}`)}
+          className="w-full h-[32px] px-2 bg-white flex items-center justify-end border-r border-b hover:bg-gray-100"
         >
           <span className="text-[12px] font-normal text-[#121212] leading-4 text-right w-[108px] truncate">
             {date}
@@ -53,7 +54,8 @@ const submittedDates = [
       {Array.from({ length: fillerRows }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-full h-[32px] p-2 bg-white border-r border-b"
+          onClick={() => console.log(`Clicked on submitted's filler row ${idx}`)}
+          className="w-full h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100"
         ></div>
       ))}
     </div>

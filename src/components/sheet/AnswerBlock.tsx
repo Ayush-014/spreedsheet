@@ -38,21 +38,24 @@ const AnswerBlock: React.FC = () => {
           <span className="text-[14px] font-medium leading-5 text-[#505450]">
             Answer a question
           </span>
-          <div className="w-[20px] h-[20px] rounded-[4px] flex items-center justify-center">
-            ⋯
+          <div className="w-[20px] h-[20px] rounded-[4px] flex items-center justify-center rotate-180">
+            ^
           </div>
         </div>
       </div>
 
       <div className="flex space-x-[1px]">
+        
         <div className="w-[125px] space-y-[1px]">
           <div className="h-[32px] px-[8px] pr-[4px] flex items-center bg-[#DCCFFC]">
             <span className="text-[12px] font-semibold text-[#121212]">Priority</span>
           </div>
+
           {data.map((item, idx) => (
             <div
               key={idx}
-              className="h-[32px] px-2 flex items-center bg-white justify-center border-r border-b"
+              onClick={() => console.log(`Clicked Priority cell ${idx}: ${item.priority}`)}
+              className="h-[32px] px-2 flex items-center bg-white justify-center border-r border-b hover:bg-gray-100 cursor-pointer"
             >
               <div
                 className={`w-[48px] h-[16px] text-[12px] leading-4 font-semibold text-center rounded ${getPriorityColor(
@@ -63,8 +66,13 @@ const AnswerBlock: React.FC = () => {
               </div>
             </div>
           ))}
+
           {Array.from({ length: fillerRows }).map((_, idx) => (
-            <div key={`filler-priority-${idx}`} className="h-[32px] p-2 bg-white border-r border-b"></div>
+            <div
+              key={`filler-priority-${idx}`}
+              onClick={() => console.log(`Clicked Priority filler cell ${idx}`)}
+              className="h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100 cursor-pointer"
+            ></div>
           ))}
         </div>
 
@@ -72,18 +80,25 @@ const AnswerBlock: React.FC = () => {
           <div className="h-[32px] px-[8px] pr-[4px] flex items-center bg-[#DCCFFC]">
             <span className="text-[12px] font-semibold text-[#121212]">Due Date</span>
           </div>
+
           {data.map((item, idx) => (
             <div
               key={idx}
-              className="h-[32px] px-2 flex items-center bg-white justify-end border-r border-b"
+              onClick={() => console.log(`Clicked Due Date cell ${idx}: ${item.dueDate}`)}
+              className="h-[32px] px-2 flex items-center bg-white justify-end border-r border-b hover:bg-gray-100 cursor-pointer"
             >
               <span className="text-[12px] font-normal text-[#121212] leading-4 w-[109px] text-right truncate">
                 {item.dueDate}
               </span>
             </div>
           ))}
+
           {Array.from({ length: fillerRows }).map((_, idx) => (
-            <div key={`filler-date-${idx}`} className="h-[32px] p-2 bg-white border-r border-b"></div>
+            <div
+              key={`filler-date-${idx}`}
+              onClick={() => console.log(`Clicked Due Date filler cell ${idx}`)}
+              className="h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100 cursor-pointer"
+            ></div>
           ))}
         </div>
       </div>

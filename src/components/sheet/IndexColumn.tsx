@@ -21,7 +21,8 @@ export default function IndexColumn() {
       {rows.map((num) => (
         <div
           key={num}
-          className="w-full max-h-[32px] py-4 h-[32px]  flex items-center justify-center border-b border-gray-200 bg-white"
+          onClick={() => console.log(`Clicked on Index's row ${num}`)}
+          className="w-full max-h-[32px] py-4 h-[32px]  flex items-center justify-center border-b border-gray-200 bg-white hover:bg-gray-100"
         >
           <span className="text-[14px] leading-[20px] text-[#757575] font-normal">
             {num}

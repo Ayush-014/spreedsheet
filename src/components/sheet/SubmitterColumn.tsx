@@ -26,13 +26,14 @@ const SubmitterColumn: React.FC = () => {
         </div>
 
         <div className="w-[20px] h-[20px] p-[4px] rounded-[4px] flex items-center justify-center">
-          <span className="w-[12px] text-[#757575] text-sm leading-none">⋯</span>
+          <span className="w-[12px] text-[#757575] text-sm leading-none rotate-180">^</span>
         </div>
       </div>
 
       {submitters.map((name, idx) => (
         <div
           key={idx}
+          onClick={() => console.log(`Clicked on Submitter's content row ${idx}`)}
           className="w-[124px] h-[32px] px-2 flex items-center bg-white hover:bg-gray-100 cursor-pointer border-r border-b"
         >
           <span className="text-[12px] leading-4 font-normal text-[#121212] truncate w-[108px]">
@@ -44,7 +45,8 @@ const SubmitterColumn: React.FC = () => {
       {Array.from({ length: fillerRows }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-[124px] h-[32px] p-2 bg-white border-r border-b"
+          onClick={() => console.log(`Clicked on Submitter's filler row ${idx}`)}
+          className="w-[124px] h-[32px] p-2 bg-white border-r border-b hover:bg-gray-100"
         ></div>
       ))}
     </div>

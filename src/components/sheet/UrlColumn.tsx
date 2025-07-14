@@ -24,6 +24,7 @@ const UrlColumn: React.FC = () => {
       {urls.map((url, idx) => (
         <div
           key={idx}
+          onClick={() => console.log(`Clicked on Url-Coulmn's content row ${idx}`)}
           className="w-[124px] h-[32px] px-2 flex items-center bg-white border-r border-b border-[#E9E9E9] hover:bg-gray-100 cursor-pointer"
         >
           <span className="text-[12px] leading-4 font-normal text-[#121212] underline decoration-solid underline-offset-0 truncate w-[108px]">
@@ -35,7 +36,8 @@ const UrlColumn: React.FC = () => {
       {Array.from({ length: fillerBottomRows }).map((_, idx) => (
         <div
           key={`filler-${idx}`}
-          className="w-[124px] h-[32px] p-2 bg-white border-r border-b border-[#E9E9E9]"
+          onClick={() => console.log(`Clicked on Url-Coulmn's filler row ${idx}`)}
+          className="w-[124px] h-[32px] p-2 bg-white border-r border-b border-[#E9E9E9] hover:bg-gray-100"
         ></div>
       ))}
     </div>
